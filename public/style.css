@@ -132,6 +132,12 @@ body {
     margin-bottom: 20px;
     color: #f4511e;
   }
+  footer a {
+    margin-left: 4px;
+  }
+  footer a i {
+    margin-right: 4px;
+  }
   .slideanim {visibility:hidden;}
   .slide {
     animation-name: slide;
