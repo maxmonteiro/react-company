@@ -4,6 +4,7 @@ import Site from './Site'
 import Rodape from './componentes/Rodape'
 import Cabecalho from './componentes/Cabecalho'
 import Inicio from './componentes/Inicio'
+import Servicos from './componentes/Servicos'
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
       <div className="App">
         <Cabecalho />
         <Inicio />
+        <Servicos />
         <Site />
         <Rodape />
       </div>
