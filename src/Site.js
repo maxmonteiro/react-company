@@ -275,8 +275,8 @@ const Site = props => {
         src="/w3images/map.jpg"
         className="w3-image w3-greyscale-min"
         classStyle="width:100%"
+        alt=""
       />
-
     </div>
   );
 };

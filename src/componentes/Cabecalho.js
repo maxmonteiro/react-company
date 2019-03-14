@@ -1,8 +1,10 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Cabecalho = props => {
-    return (
-        <nav className="navbar navbar-default navbar-fixed-top">
+  return (
+    <div>
+      <nav className="navbar navbar-default navbar-fixed-top">
         <div className="container">
           <div className="navbar-header">
             <button
@@ -15,17 +17,15 @@ const Cabecalho = props => {
               <span className="icon-bar" />
               <span className="icon-bar" />
             </button>
-            <a className="navbar-brand" href="#myPage">
-              Logo
-            </a>
+            <Link className="navbar-brand" to="/">Logo</Link>
           </div>
           <div className="collapse navbar-collapse" id="myNavbar">
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <a href="#about">ABOUT</a>
+                <Link to="/">INÍCIO</Link>
               </li>
               <li>
-                <a href="#services">SERVICES</a>
+                <Link to="/servicos">SERVIÇOS</Link>
               </li>
               <li>
                 <a href="#portfolio">PORTFOLIO</a>
@@ -40,7 +40,28 @@ const Cabecalho = props => {
           </div>
         </div>
       </nav>
-    )
-}
+      <div className="jumbotron text-center">
+        <h1>Company</h1>
+        <p>We specialize in blablabla</p>
+        <form>
+          <div className="input-group">
+            <input
+              type="email"
+              className="form-control"
+              size="50"
+              placeholder="Email Address"
+              required
+            />
+            <div className="input-group-btn">
+              <button type="button" className="btn btn-danger">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
 
-export default Cabecalho
+export default Cabecalho;
