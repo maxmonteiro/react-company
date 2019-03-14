@@ -28,7 +28,7 @@ const Cabecalho = props => {
                 <Link to="/servicos">SERVIÇOS</Link>
               </li>
               <li>
-                <a href="#portfolio">PORTFOLIO</a>
+                <Link to="/portfolio">PORTFOLIO</Link>
               </li>
               <li>
                 <a href="#pricing">PRICING</a>
