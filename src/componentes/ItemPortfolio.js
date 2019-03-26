@@ -4,7 +4,7 @@ const ItemPortfolio = props => {
   return (
     <div className="col-sm-4">
       <div className="thumbnail">
-        <img src="paris.jpg" alt="" width="400" height="300" />
+        <img src={props.conteudo.image} alt="" width="400" height="300" />
         <p>
           <strong>{props.conteudo.titulo}</strong>
         </p>
