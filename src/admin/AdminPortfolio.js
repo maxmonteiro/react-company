@@ -13,6 +13,25 @@ class AdminPortfolio extends Component {
         console.log(this.titulo.value)
         console.log(this.descricao.value)
         console.log(this.imagem.value)
+
+        // lista de arquivos do input file
+        // files retorna uma lista de arquivos, pegaremos o primeiro
+        const arquivo = this.imagem.files[0]
+        console.log(arquivo)
+        
+        // extraindo dados do arquivo
+        const {name, size, type} = arquivo
+        console.log(name, size, type)
+
+        // fazendo upload da imagem
+        const ref = storage.ref(name)
+        ref.put(arquivo)
+        .then(img => {
+            console.log(img.metadata)
+        }).catch((err) => {
+            
+        });
+
         e.preventDefault()
     }
 
