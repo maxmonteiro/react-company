@@ -9,26 +9,28 @@ class AdminPortfolio extends Component {
   }
 
   gravaPortfolio(e) {
-    console.log("grava portfolio");
-    console.log(this.titulo.value);
-    console.log(this.descricao.value);
-    console.log(this.imagem.value);
-
     // lista de arquivos do input file
     // files retorna uma lista de arquivos, pegaremos o primeiro
     const arquivo = this.imagem.files[0];
-    console.log(arquivo);
-
     // extraindo dados do arquivo
     const { name, size, type } = arquivo;
-    console.log(name, size, type);
-
-    // fazendo upload da imagem
+    // fazendo upload da imagem e gravação do portfolio
     const ref = storage.ref(name);
     ref.put(arquivo).then(img => {
       // recuperando url da imagem salva
       img.ref.getDownloadURL().then(downloadURL => {
-        console.log(downloadURL);
+        // criando objeto a ser gravado
+        const novoPortfolio = {
+            titulo: this.titulo.value,
+            descricao: this.descricao.value,
+            image: downloadURL
+        };
+        // 'portfolio' é uma localização específica no banco de dados do Firebase
+        // no caso, da tabela portfolio
+        config.push('portfolio', {
+            data: novoPortfolio
+        })
+
       });
     });
 
