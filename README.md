@@ -1,5 +1,26 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Firebase Configuration
+
+In the src/ directory, create a file **firebase-config.js** with the following code:
+~~~
+const Rebase = require("re-base");
+const firebase = require("firebase");
+
+const FirebaseConfig = {
+  // firebase config
+};
+
+const app = firebase.initializeApp(FirebaseConfig);
+const config = Rebase.createClass(app.database());
+
+export const storage = app.storage();
+
+export default config;
+~~~
+
+Where *firebase config* is the configuration present in your Firebase project configuration
+
 ## Available Scripts
 
 In the project directory, you can run:
