@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { auth } from './../firebase-config';
 
 class Login extends Component {
   constructor(props) {
@@ -11,7 +12,13 @@ class Login extends Component {
   }
 
   autenticaUsuario() {
-    console.log(this.email.value, this.senha.value);
+    auth.signInWithEmailAndPassword(this.email.value, this.senha.value)
+    .then(user => {
+        console.log('usuario:', user);
+    })
+    .catch(err => {
+        console.log('erro:', err);
+    })
   }
 
   render() {
