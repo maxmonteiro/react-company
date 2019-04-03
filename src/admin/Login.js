@@ -7,9 +7,9 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Login</h1>
-        <form>
+      <div className="container">
+        <h1 className="text-center">Login</h1>
+        <form className="col-md-4 col-md-offset-4">
           <div className="form-group">
             <label forHTML="exampleInputEmail1">Email</label>
             <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
