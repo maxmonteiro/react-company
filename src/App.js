@@ -8,7 +8,9 @@ import Servicos from './componentes/Servicos';
 import Portfolio from './componentes/Portfolio';
 import Precos from './componentes/Precos';
 import Contato from './componentes/Contato';
+// Área administrativa
 import Admin from "./admin/Admin";
+import Login from "./admin/Login";
 
 class App extends Component {
   render() {
@@ -24,6 +26,7 @@ class App extends Component {
           <Route path="/contato" component={Contato} />
 
           <Route path="/admin" component={Admin} />
+          <Route path="/login" component={Login} />
 
           <Rodape />
         </div>
