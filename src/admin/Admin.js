@@ -30,14 +30,19 @@ class Admin extends Component {
 
   render() {
     if (this.state.logando) {
-      return <p>Aguarde...</p>
+      return (
+        <div className="container">
+          <p>Aguarde...</p>
+        </div>
+        
+      )
     }
     // não está logado
     if (!this.state.autenticado) {
       return <Redirect to="/login"></Redirect>
     }
     return (
-      <div>
+      <div className="container">
         <h2>Painel Administrativo</h2>
         <Route path={'/'} component={AdminMenu}></Route>
         <Route path={`${this.props.match.url}/portfolio`} component={AdminPortfolio}></Route>
