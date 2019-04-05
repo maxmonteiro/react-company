@@ -5,32 +5,37 @@ class AdminPortfolio extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      gravando: false
+    };
+
     this.gravaPortfolio = this.gravaPortfolio.bind(this);
   }
 
   gravaPortfolio(e) {
-    // lista de arquivos do input file
-    // files retorna uma lista de arquivos, pegaremos o primeiro
-    const arquivo = this.imagem.files[0];
-    // extraindo dados do arquivo
-    const { name, size, type } = arquivo;
-    // fazendo upload da imagem e gravação do portfolio
-    const ref = storage.ref(name);
-    ref.put(arquivo).then(img => {
-      // recuperando url da imagem salva
-      img.ref.getDownloadURL().then(downloadURL => {
-        // criando objeto a ser gravado
-        const novoPortfolio = {
-            titulo: this.titulo.value,
-            descricao: this.descricao.value,
-            image: downloadURL
-        };
-        // 'portfolio' é uma localização específica no banco de dados do Firebase
-        // no caso, da tabela portfolio
-        config.push('portfolio', {
-            data: novoPortfolio
-        })
+    const itemPortfolio = {
+      titulo: this.titulo.value,
+      descricao: this.descricao.value,
+      image: this.image
+    };
 
+    this.setState({ gravando: true });
+
+    const arquivo = itemPortfolio.image.files[0];
+    const { name, size, type } = arquivo;
+    const ref = storage.ref(name);
+
+    ref.put(arquivo).then(img => {
+      img.ref.getDownloadURL().then(downloadURL => {
+        const novoPortfolio = {
+          titulo: itemPortfolio.titulo,
+          descricao: itemPortfolio.descricao,
+          image: downloadURL
+        };
+        config.push("portfolio", {
+          data: novoPortfolio
+        });
+        this.setState({ gravando: false });
       });
     });
 
@@ -38,6 +43,15 @@ class AdminPortfolio extends Component {
   }
 
   render() {
+    if (this.state.gravando) {
+      return (
+        <div className="container">
+          <p>
+            <span className="glyphicon glyphicon-refresh" /> Aguarde...
+          </p>
+        </div>
+      );
+    }
     return (
       <div style={{ padding: "100px" }}>
         <h2>Potrfólio - Área Administrativa</h2>
@@ -61,12 +75,12 @@ class AdminPortfolio extends Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="imagem">Imagem</label>
+            <label htmlFor="image">image</label>
             <input
               type="file"
               className="form-control"
-              id="imagem"
-              ref={ref => (this.imagem = ref)}
+              id="image"
+              ref={ref => (this.image = ref)}
             />
           </div>
           <button type="submit" className="btn btn-primary">
