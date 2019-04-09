@@ -1,8 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # Firebase Configuration
-
-In the src/ directory, create a file **firebase-config.js** with the following code:
+Enable Authentication by email, create a user and in the src/ directory, create a file **firebase-config.js** with the following code:
 ~~~
 const Rebase = require("re-base");
 const firebase = require("firebase");
@@ -15,11 +14,13 @@ const app = firebase.initializeApp(FirebaseConfig);
 const config = Rebase.createClass(app.database());
 
 export const storage = app.storage();
+export const auth = app.auth();
 
 export default config;
 ~~~
 
 Where *firebase config* is the configuration present in your Firebase project configuration
+
 
 ## Available Scripts
 
