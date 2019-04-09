@@ -21,6 +21,10 @@ export default config;
 
 Where *firebase config* is the configuration present in your Firebase project configuration
 
+## How-to
+1. clone the project
+2. npm install
+3. npm start
 
 ## Available Scripts
 
